@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array de Objetos JSON</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tabla de Datos de Personas</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- Las filas se añadirán aquí mediante JavaScript -->
+      </tbody>
+    </table>
+
+    <script>
+      // Crear un array de objetos JSON
+      const data = [
+        {
+          nombre: "Andrés",
+          apellido: "García",
+          correo: "andresgarcia0313@gmail.com",
+          telefono: "+573012456984",
+        },
+        {
+          nombre: "Katherin",
+          apellido: "Usa",
+          correo: "katherin.usa@gmail.com",
+          telefono: "+573012345678",
+        },
+        {
+          nombre: "Juan",
+          apellido: "Pérez",
+          correo: "juan.perez@gmail.com",
+          telefono: "+573012345679",
+        },
+        {
+          nombre: "María",
+          apellido: "López",
+          correo: "maria.lopez@gmail.com",
+          telefono: "+573012345680",
+        },
+      ];
+
+      // Obtener la referencia del cuerpo de la tabla
+      const cuerpoDeLaTabla = document.getElementById("table-body");
+
+      // Iterar sobre el array y añadir filas a la tabla
+      data.forEach((registroPersona) => {
+        const fila = document.createElement("tr");
+
+        // Crear celdas para cada propiedad del objeto
+        for (const variableKey in registroPersona) {
+          const celda = document.createElement("td");
+          celda.textContent = registroPersona[variableKey]; // Añadir el valor de la propiedad
+          fila.appendChild(celda); // Añadir la celda a la fila
+        }
+
+        cuerpoDeLaTabla.appendChild(fila); // Añadir la fila al cuerpo de la tabla
+      });
+    </script>
+  </body>
+</html>
